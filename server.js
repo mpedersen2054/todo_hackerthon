@@ -4,6 +4,7 @@ var PORT = process.env.PORT || 8001
 var express = require('express')
 var bodyParser = require('body-parser')
 var path = require('path')
+var session = require('express-session')
 
 var app = express()
 
@@ -17,6 +18,11 @@ require('./server/config/dbConnection')
 app.use(express.static(path.join(__dirname, 'client')))
 app.use(express.static(path.join(__dirname, 'bower_components')))
 app.use(bodyParser.json())
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // load in routes
 require('./server/config/routes')(app)

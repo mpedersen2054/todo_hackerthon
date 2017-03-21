@@ -3,9 +3,38 @@ var User = require('../models/user')
 
 var controller = {
 
-  something: function(req, res) {
-    console.log('waddup user.something!')
-    res.send('hello world!')
+  login: function(req, res) {
+    User.findOne({username: req.body.username}, function(err, user){
+    	if(!user){
+    		var newUser = new User(req.body);
+    		newUser.save(function(err, user){
+    			if (err) {
+    				console.log('error saving');
+    			}else {
+    				req.session.user = user;
+    				res.json({success: true, user: user});
+    			}
+    		})
+    	}else {
+    		req.session.user = user;
+    		res.json({success: true, user: user});
+    	}
+    })
+  },
+
+  getUserSession: function(req, res){
+  	var session = req.session;
+  	res.json({session: session})
+  },
+
+  logout: function(req, res){
+  	req.session.destroy(function(err){
+  		if(err){
+  			res.json({success: false});
+  		}else {
+  			res.json({success: true});
+  		}
+  	})
   }
 
 }
