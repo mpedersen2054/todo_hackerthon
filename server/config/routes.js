@@ -1,5 +1,6 @@
 
 var users = require('../controllers/users')
+var todos = require('../controllers/todos')
 
 function routes(app) {
 
@@ -7,6 +8,10 @@ function routes(app) {
   app.post('/api/login', users.login);
   app.get('/api/logout', users.logout);
   app.get('/api/getUserSession', users.getUserSession);
+
+  // todos routes
+  app.get('/api/getAllTodos/:uid', todos.getAllTodos)
+  app.post('/api/addTodo', todos.addTodo)
 }
 
 module.exports = routes

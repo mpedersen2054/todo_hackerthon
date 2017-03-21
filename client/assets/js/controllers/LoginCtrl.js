@@ -6,10 +6,12 @@ angular.module('myApp')
   $scope.user = {}
 
   $scope.loginUser = function() {
-  	console.log($scope.loginForm);
-  	UserFactory.loginUser($scope.loginForm.username, function(data){
-  		console.log('loginCtrl', data);
-  		$location.url('/dashboard');
+  	console.log($scope.loginForm)
+    // do validation here
+  	UserFactory.loginUser($scope.loginForm.username, function(){
+      // doesnt need to get any data because no matter what is entered
+      // the username will either be created or retrieved
+  		$location.url('/dashboard')
   	})
   }
 

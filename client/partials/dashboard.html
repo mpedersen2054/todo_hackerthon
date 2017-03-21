@@ -9,8 +9,8 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2 links-col">
       <ul>
-        <li>Welcome Someone</li>
-        <li><a>Logout</a></li>
+        <li>Welcome {{user.username}}</li>
+        <li><a ng-click="logout()">Logout</a></li>
       </ul>
 
       <hr>
@@ -23,46 +23,21 @@
       <div class="todo-container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <input type="text" class="form-control" placeholder="Enter a todo...">
+            <form ng-submit="addTodo()">
+              <input ng-model="newTodo.text" type="text" class="form-control" placeholder="Enter a todo...">
+            </form>
           </div>
           <div class="panel-body">
 
             <div class="todos">
-              <div class="todo">
-                <div class="row">
-                  <div class="col-md-1">
-                    <input type="checkbox">
-                  </div>
-                  <div class="col-md-9">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum.
-                  </div>
-                  <div class="col-md-2">
-                    03/27 3:00pm
-                  </div>
-                </div>
-              </div>
 
-              <div class="todo">
+              <div class="todo" ng-repeat="todo in todos">
                 <div class="row">
                   <div class="col-md-1">
                     <input type="checkbox">
                   </div>
                   <div class="col-md-9">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum.
-                  </div>
-                  <div class="col-md-2">
-                    03/27 3:00pm
-                  </div>
-                </div>
-              </div>
-
-              <div class="todo">
-                <div class="row">
-                  <div class="col-md-1">
-                    <input type="checkbox">
-                  </div>
-                  <div class="col-md-9">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum.
+                    {{todo.text}}
                   </div>
                   <div class="col-md-2">
                     03/27 3:00pm
@@ -71,8 +46,17 @@
               </div>
 
               <!-- <div class="todo">
-                <input type="checkbox">
-                <div class="vert-divider"></div>
+                <div class="row">
+                  <div class="col-md-1">
+                    <input type="checkbox">
+                  </div>
+                  <div class="col-md-9">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum.
+                  </div>
+                  <div class="col-md-2">
+                    03/27 3:00pm
+                  </div>
+                </div>
               </div> -->
 
             </div>
