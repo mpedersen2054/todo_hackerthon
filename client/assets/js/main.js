@@ -6,6 +6,10 @@ angular.module('myApp', ['ngRoute'])
       templateUrl: 'partials/login.html',
       controller: 'LoginCtrl'
     })
+    .when('/dashboard', {
+      templateUrl: 'partials/dashboard.html',
+      controller: 'TodosCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     })
