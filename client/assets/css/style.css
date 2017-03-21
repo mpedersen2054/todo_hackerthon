@@ -1,4 +1,40 @@
 
-h1 {
-  color: red;
+.links-col {
+  /*text-align: right;*/
+}
+
+.links-col ul {
+  list-style: none;
+  margin-top: 5px;
+  padding-left: 0;
+}
+
+.links-col ul li {
+  display: inline;
+  margin-right: 30px;
+}
+
+.links-col ul li a {
+  cursor: pointer;
+}
+
+.todos .todo {
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+}
+
+.todos .todo:last-child {
+  border-bottom: none;
+}
+
+input[type=checkbox], input[type=radio] {
+  /*padding: 10px;
+  border: 1px solid #ccc;*/
+}
+
+.todo input,
+.todo .todo-text-container {
+  /*display inline-block;
+  float: left;*/
+  /*margin: 0 10px;*/
 }
