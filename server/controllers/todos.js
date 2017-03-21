@@ -22,7 +22,7 @@ var controller = {
     .populate('_todos')
     .exec(function(err, user) {
       if (!err && user) {
-        console.log(user)
+        // console.log(user)
         var newTodo = new Todo(todoData)
         newTodo._user = user._id
         newTodo.save(function(err, todo) {
@@ -36,17 +36,20 @@ var controller = {
   },
 
   toggleCompleted: function(req, res) {
-    console.log(req.body)
-    Todo.findOne({ _id: req.body._id }, function(err, todo) {
-      console.log('errror?', err)
-      console.log('toooodo?', todo)
+    var userId = req.session.user._id
+    var todoId = req.body._id
+
+    Todo.findOne({ _id: req.body._id })
+    .exec(function(err, todo) {
       todo.completed = !todo.completed
-      todo.save(function(err2) {
+      todo.save(function(err2, todo) {
         if (err2) {
           console.log('errrrrrror', err2)
         } else {
-          Todo.find({}, function(err, todos) {
-            res.json({ success: true, todos: todos })
+          User.findOne({ _id: userId })
+          .populate('_todos')
+          .exec(function(err, user) {
+            res.json({ success: true, todos: user._todos })
           })
         }
       })

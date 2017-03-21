@@ -31,27 +31,33 @@
 
             <div class="todos">
 
-              <div class="todo" ng-repeat="todo in todos">
-                <div class="row">
-                  <div class="col-md-1">
-                    <input ng-checked="todo.completed" ng-click="toggleCompleted(todo)" type="checkbox">
-                  </div>
-                  <div class="col-md-2">
-                    <div class="status completed" ng-if="todo.completed">
-                      Complete
+              <div ng-if="todos.length == 0">
+                <h3>No Todos!</h3>
+              </div>
+
+              <div ng-if="todos.length > 0">
+                <div class="todo" ng-repeat="todo in todos">
+                  <div class="row">
+                    <div class="col-md-1">
+                      <input ng-checked="todo.completed" ng-click="toggleCompleted(todo)" type="checkbox">
                     </div>
-                    <div class="status incompleted" ng-if="!todo.completed">
-                      Incomplete
+                    <div class="col-md-2">
+                      <div class="status completed" ng-if="todo.completed">
+                        Complete
+                      </div>
+                      <div class="status incompleted" ng-if="!todo.completed">
+                        Incomplete
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-7">
-                    {{todo.text}}
-                    <small>( {{todo.createdAt | date:'MM/dd h:mm'}} )</small>
-                  </div>
-                  <div class="col-md-2 remove-col">
-                    <a>
-                      <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
+                    <div class="col-md-7">
+                      {{todo.text}}
+                      <small>( {{todo.createdAt | date:'MM/dd h:mm'}} )</small>
+                    </div>
+                    <div class="col-md-2 remove-col">
+                      <a>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
