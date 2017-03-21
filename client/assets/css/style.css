@@ -20,9 +20,21 @@
 
 .todos .todo {
   border-bottom: 1px solid #ccc;
-  padding: 15px 0;
+  padding: 20px 0;
 }
 
 .todos .todo:last-child {
   border-bottom: none;
+}
+
+input[type=checkbox], input[type=radio] {
+  /*padding: 10px;
+  border: 1px solid #ccc;*/
+}
+
+.todo input,
+.todo .todo-text-container {
+  /*display inline-block;
+  float: left;*/
+  /*margin: 0 10px;*/
 }
