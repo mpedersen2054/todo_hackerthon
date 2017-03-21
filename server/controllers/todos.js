@@ -33,6 +33,28 @@ var controller = {
         })
       }
     })
+  },
+
+  toggleCompleted: function(req, res) {
+    console.log(req.body)
+    Todo.findOne({ _id: req.body._id }, function(err, todo) {
+      console.log('errror?', err)
+      console.log('toooodo?', todo)
+      todo.completed = !todo.completed
+      todo.save(function(err2) {
+        if (err2) {
+          console.log('errrrrrror', err2)
+        } else {
+          Todo.find({}, function(err, todos) {
+            res.json({ success: true, todos: todos })
+          })
+        }
+      })
+    })
+  },
+
+  delete: function(req, res) {
+    res.send('hi')
   }
 
 }

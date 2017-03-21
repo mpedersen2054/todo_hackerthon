@@ -5,6 +5,7 @@ angular.module('myApp')
   $scope.loginForm = {}
   $scope.user = {}
   $scope.newTodo = {}
+  // $scope.cbModel = { completed: false }
   $scope.todos = []
 
   function init() {
@@ -25,6 +26,12 @@ angular.module('myApp')
     // validation here
     TodoFactory.addTodo($scope.newTodo, $scope.user._id, function(err, todos) {
       $scope.newTodo = {}
+      $scope.todos = todos
+    })
+  }
+
+  $scope.toggleCompleted = function(todo) {
+    TodoFactory.toggleCompleted(todo, function(todos) {
       $scope.todos = todos
     })
   }

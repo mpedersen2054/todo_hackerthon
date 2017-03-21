@@ -23,6 +23,16 @@ angular.module('myApp')
       })
   }
 
+  factory.toggleCompleted = function(todo, callback) {
+    // console.log(todo)
+    $http.post('/api/toggleCompleted', todo)
+      .then(function(response) {
+        var data = response.data
+        todos = data.todos
+        callback(todos)
+      })
+  }
+
   return factory
 
 }])
