@@ -15,6 +15,7 @@ angular.module('myApp')
   }
 
   factory.addTodo = function(todoData, userId, callback) {
+    console.log(todoData)
     $http.post('/api/addTodo', { userId, todoData })
       .then(function(response) {
         var data = response.data

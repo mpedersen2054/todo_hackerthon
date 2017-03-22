@@ -1,6 +1,7 @@
 
-.links-col {
-  /*text-align: right;*/
+.add-btn {
+  position: relative;
+  top: 23px;
 }
 
 .links-col ul {
@@ -27,9 +28,10 @@
   border-bottom: none;
 }
 
-.todo small {
+.todo span {
   position: relative;
-  left: 15px;
+  left: 30px;
+  color: skyblue;
 }
 
 .status {
@@ -56,4 +58,11 @@
 
 .remove-col a {
   cursor: pointer;
+}
+
+.complete-by-label {
+  position: relative;
+  top: 7px;
+  left: 10px;
+  color: #999;
 }

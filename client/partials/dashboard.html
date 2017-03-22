@@ -9,7 +9,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2 links-col">
       <ul>
-        <li>Welcome {{user.username}}</li>
+        <li>Welcome <b>{{user.username}}</b></li>
         <li><a ng-click="logout()">Logout</a></li>
       </ul>
 
@@ -24,7 +24,19 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <form ng-submit="addTodo()">
-              <input ng-model="newTodo.text" type="text" class="form-control" placeholder="Enter a todo...">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Todo name</label>
+                  <input ng-model="newTodo.text" type="text" class="form-control" placeholder="Enter a todo...">
+                </div>
+                <div class="col-md-4">
+                  <label>Complete By</label>
+                  <input ng-model="newTodo.finishBy" type="datetime-local" class="form-control">
+                </div>
+                <div class="col-md-2">
+                  <input type="submit" value="Add" class="btn btn-primary form-control add-btn">
+                </div>
+              </div>
             </form>
           </div>
           <div class="panel-body">
@@ -36,7 +48,7 @@
               </div>
 
               <div ng-if="todos.length > 0">
-                <div class="todo" ng-repeat="todo in todos">
+                <div class="todo" ng-repeat="todo in todos | orderBy:'finishBy'">
                   <div class="row">
                     <div class="col-md-1">
                       <input ng-checked="todo.completed" ng-click="toggleCompleted(todo)" type="checkbox">
@@ -51,7 +63,7 @@
                     </div>
                     <div class="col-md-7">
                       {{todo.text}}
-                      <small>( {{todo.createdAt | date:'MM/dd h:mm'}} )</small>
+                      <span>( {{todo.finishBy | date:'MM/dd h:mm'}} )</span>
                     </div>
                     <div class="col-md-2 remove-col">
                       <a>
@@ -61,20 +73,6 @@
                   </div>
                 </div>
               </div>
-
-              <!-- <div class="todo">
-                <div class="row">
-                  <div class="col-md-1">
-                    <input type="checkbox">
-                  </div>
-                  <div class="col-md-9">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum.
-                  </div>
-                  <div class="col-md-2">
-                    03/27 3:00pm
-                  </div>
-                </div>
-              </div> -->
 
             </div>
 
