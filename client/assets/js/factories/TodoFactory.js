@@ -1,7 +1,6 @@
 
 angular.module('myApp')
 .factory('TodoFactory', ['$http', function($http) {
-
   var todos = []
   var factory = {}
 
